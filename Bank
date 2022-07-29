@@ -1,0 +1,77 @@
+class Account:
+    def __init__(self):
+        self.p = 0
+        self.t = 0
+        self.ac = ''
+        self.inte = 0
+        self.p = int(input('Enter Any Money -->'))
+
+    def interest(self):
+        self.t = int(input('Enter Any Year -->'))
+        #self.ac = input('Enter Types Of Your Account -->')
+
+        if(self.ac == 's'):
+            self.inte = (self.p * 10 * self.t)/100
+        else:
+            self.inte = (self.p * 15 * self.t)/100
+
+        print('Your Interest Is -:-',self.inte)
+
+    def deposit(self):
+        amt = int(input('Enter Add Money -->'))
+        self.p = self.p + amt
+        print('Your Deposit Is -:-',self.p)
+
+    def withdraw(self):
+        if(self.ac == 's'):
+            if(self.p > 1000):
+                amt = int(input('Enter Withdraw Money -->'))
+                self.p = self.p - amt
+            else:
+                print('Not Withdraw Your Money Is less then 1000')
+        else:
+            if(self.p > 10000):
+                amt = int(input('Enter Withdraw Money -->'))
+                self.p = self.p - amt
+            else:
+                print('Not Withdraw Your Money Is less then 1000')
+        
+        print('Your Withdraw Money Is -:-',self.p)
+
+class SavingAccount(Account):
+    def __init__(self):
+        super().__init__()
+        self.ac = 's'
+class CurrentAccount(Account):
+    def __init__(self):
+        super().__init__()
+        self.ac = 'c'
+
+ch = input('Enter SA(SAVING) or CA(CURRENT) For Your Account -->')
+
+if(ch == 'SA'):
+    ob=SavingAccount()
+    h = int(input('Enter Choice 1)Interest  2) Deposit 3) Withdraw'))
+    if(h == 1):
+        ob.interest()
+    elif(h == 2):
+        ob.deposit()
+    elif(h == 3):
+        ob.withdraw()
+        
+else:
+    ob=CurrentAccount()
+    h = int(input('Enter Choice 1)Interest  2) Deposit 3) Withdraw'))
+    if(h == 1):
+        ob.interest()
+    elif(h == 2):
+        ob.deposit()
+    elif(h == 3):
+        ob.withdraw()
+        
+
+
+#ob = SavingAccount()
+#ob.interest()
+#ob.deposit()
+#ob.withdraw()
